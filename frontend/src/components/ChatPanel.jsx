@@ -107,6 +107,99 @@ function Avatar() {
   );
 }
 
+const BUDDY_STORE = "hs-chat-buddy"; // set when the visitor hides the robot for this tab
+
+/** Floating robot above the launcher: bobs, blinks, follows the pointer with its eyes, opens the chat on click. */
+function RobotBuddy({ onOpen }) {
+  const eyes = useRef(null);
+  const [hidden, setHidden] = useState(() => {
+    try { return sessionStorage.getItem(BUDDY_STORE) === "1"; } catch { return false; }
+  });
+
+  useEffect(() => {
+    if (hidden) return;
+    let frame = 0;
+    const look = (e) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const el = eyes.current;
+        if (!el) return;
+        const r = el.ownerSVGElement.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        const d = Math.hypot(dx, dy) || 1;
+        const k = Math.min(1, d / 300) * 2.6; // eyes move at most ~2.6 units inside the visor
+        el.setAttribute("transform", `translate(${(dx / d) * k} ${(dy / d) * k})`);
+      });
+    };
+    addEventListener("pointermove", look, { passive: true });
+    return () => { removeEventListener("pointermove", look); cancelAnimationFrame(frame); };
+  }, [hidden]);
+
+  if (hidden) return null;
+  const hide = () => {
+    setHidden(true);
+    try { sessionStorage.setItem(BUDDY_STORE, "1"); } catch { /* storage blocked */ }
+  };
+
+  return (
+    <div className="group/buddy fixed bottom-[5.5rem] right-[1.125rem] z-40 flex animate-rise items-center gap-2.5">
+      <div className="relative animate-float [animation-delay:-1.6s]">
+        <button type="button" onClick={onOpen}
+          className="relative rounded-2xl rounded-br-md bg-surface px-3.5 py-2 text-left text-[13.5px] font-semibold text-ink shadow-[0_10px_28px_-10px_rgb(0_0_0/0.35)] ring-1 ring-line transition-all duration-300 hover:-translate-y-0.5 hover:text-accent hover:ring-accent">
+          <span className="flex items-center gap-1.5">
+            Chat with me!
+            <span className="inline-block origin-[70%_70%] transition-transform duration-300 group-hover/buddy:rotate-[18deg]" aria-hidden="true">👋</span>
+          </span>
+          <span className="block text-[11.5px] font-medium text-ink-3">Ask me about the data</span>
+          {/* tail pointing at the robot */}
+          <span aria-hidden="true" className="absolute -right-1.5 bottom-2.5 h-3 w-3 rotate-45 bg-surface ring-1 ring-line [clip-path:polygon(100%_0,100%_100%,0_0)]" />
+        </button>
+        <button type="button" onClick={hide} aria-label="Hide the chat robot" title="Hide"
+          className="absolute -left-2 -top-2 grid h-5 w-5 place-items-center rounded-full bg-surface text-[13px] leading-none text-ink-3 opacity-0 shadow ring-1 ring-line transition-opacity hover:text-ink focus-visible:opacity-100 group-hover/buddy:opacity-100">
+          ×
+        </button>
+      </div>
+
+      <button type="button" onClick={onOpen} aria-label="Chat with HealthSignal"
+        className="animate-float rounded-2xl transition-transform duration-300 hover:-rotate-6 hover:scale-110 active:scale-95">
+        <svg viewBox="0 0 64 64" className="h-14 w-14 drop-shadow-[0_10px_14px_rgb(26_58_156/0.35)]" aria-hidden="true">
+          <defs>
+            <linearGradient id="bot-head" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stopColor="#ffffff" />
+              <stop offset="1" stopColor="#dbe6ff" />
+            </linearGradient>
+            <linearGradient id="bot-visor" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stopColor="var(--hero-1)" />
+              <stop offset="1" stopColor="var(--hero-2)" />
+            </linearGradient>
+          </defs>
+          {/* antenna */}
+          <line x1="32" y1="7" x2="32" y2="15" stroke="#c7d4f5" strokeWidth="2.5" strokeLinecap="round" />
+          <circle cx="32" cy="6" r="3.6" fill="var(--accent-2)" className="animate-pulse" />
+          {/* ears */}
+          <rect x="3.5" y="28" width="6" height="13" rx="3" fill="var(--accent)" />
+          <rect x="54.5" y="28" width="6" height="13" rx="3" fill="var(--accent)" />
+          {/* head and visor */}
+          <rect x="8" y="14" width="48" height="40" rx="15" fill="url(#bot-head)" stroke="#c7d4f5" strokeWidth="1.5" />
+          <rect x="14" y="21" width="36" height="24" rx="10" fill="url(#bot-visor)" />
+          <g ref={eyes} style={{ transition: "transform 120ms ease-out" }}>
+            <g className="animate-blink [transform-box:fill-box] [transform-origin:center]">
+              <ellipse cx="25" cy="31" rx="3.4" ry="4" fill="#9fe7ff" />
+              <ellipse cx="39" cy="31" rx="3.4" ry="4" fill="#9fe7ff" />
+              <circle cx="26.2" cy="29.6" r="1.1" fill="#fff" />
+              <circle cx="40.2" cy="29.6" r="1.1" fill="#fff" />
+            </g>
+          </g>
+          <path d="M27.5 38.5q4.5 3.2 9 0" fill="none" stroke="#9fe7ff" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="18" cy="40" r="2" fill="#fda4af" opacity=".55" />
+          <circle cx="46" cy="40" r="2" fill="#fda4af" opacity=".55" />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
 function Sources({ used }) {
   if (!used?.length) return null;
   const names = [...new Set(used.map((u) => SOURCE_LABEL[u.name] ?? u.name))];
@@ -316,6 +409,8 @@ export default function ChatPanel({ filters, tab, records }) {
 
   return (
     <>
+      {!open && <RobotBuddy onOpen={() => setOpen(true)} />}
+
       {/* launcher */}
       <button
         onClick={() => setOpen((o) => !o)}

@@ -128,6 +128,11 @@
   @keyframes trace { to { stroke-dashoffset: -48; } }
   @keyframes drift { from { transform: translate(-6%, -10%) scale(1); } to { transform: translate(8%, 12%) scale(1.15); } }
   @keyframes draw { from { stroke-dashoffset: 48; } to { stroke-dashoffset: 0; } }
+
+  --animate-float: float 3.2s ease-in-out infinite;
+  --animate-blink: blink 4.5s ease-in-out infinite;
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
 }
 
 html, body { background: var(--bg); color: var(--ink); }
