@@ -1,4 +1,4 @@
-# HealthSignal AI — Dashboard
+# HealthSignal AI Dashboard
 
 ### Hosted on Render - https://sinceai-hackathon-bayer-challenge.onrender.com/#overview
 
