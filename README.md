@@ -1,42 +1,6 @@
-<div align="center">
+# HealthSignal AI — Dashboard
 
-# 🩺 HealthSignal AI
-
-**An interactive dashboard, Bayesian what-if explorer and data assistant for COVID-19 clinical testing data**
-
-Built on the Carbon Health COVID-19 Clinical Data Repository: 93,995 tests, April to October 2020
-
-![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)
-![Recharts](https://img.shields.io/badge/Recharts-2.15-22B5BF)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
-![pandas](https://img.shields.io/badge/pandas-2.x-150458?logo=pandas&logoColor=white)
-![pgmpy](https://img.shields.io/badge/pgmpy-1.1.2-8A2BE2)
-![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
-
-[Run locally](#-quick-start) · [Features](#-features) · [API](#-api-reference) · [Chatbot](#-ask-healthsignal-chatbot) · [Deploy](#-deployment) · [GitHub repo](https://github.com/RajarshiRay25/SinceAI-Hackathon-Bayer-Challenge-PharmaTech)
-
-</div>
-
----
-
-## ✨ Features
-
-| View | What it shows |
-|---|---|
-| 📊 **Overview** | Weekly positivity and test volume, positivity by age group and test type, and symptom signals (odds ratios, prevalence, symptom count) |
-| ❤️ **Conditions & exposure** | Underlying conditions and high-risk exposure, as odds ratios with 95% CIs |
-| 🛡️ **Data quality** | Missing values, duplicates, vital signs and every cleaning step |
-| 🔮 **What-if explorer** | A Bayesian network: pick a patient profile and see what moves the estimated positivity |
-| 👥 **About us** | The team, the views and the tech stack |
-| ✨ **Ask HealthSignal** | An LLM assistant whose numbers are all computed by the backend, never by the model |
-
-Tabs are kept in the URL (`#overview`, `#conditions`, `#quality`, `#whatif`, `#about`), so each one can be bookmarked. Light and dark themes are included.
-
----
-
-## 🗂️ Project structure
+Interactive dashboard for the Carbon Health COVID-19 clinical testing data (Phase 1).
 
 ```
 healthsignal/
