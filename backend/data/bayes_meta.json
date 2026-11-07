@@ -1,0 +1,805 @@
+{
+  "created": "2026-11-07",
+  "pgmpy_version": "1.1.2",
+  "target": "covid",
+  "positive_state": "Positive",
+  "variables": {
+    "age_group": [
+      "0-18",
+      "19-30",
+      "31-45",
+      "46-60",
+      "61+"
+    ],
+    "covid": [
+      "Negative",
+      "Positive"
+    ],
+    "high_risk_exposure_occupation": [
+      "No",
+      "Yes",
+      "Unknown"
+    ],
+    "high_risk_interactions": [
+      "No",
+      "Yes",
+      "Unknown"
+    ],
+    "fever": [
+      "No",
+      "Yes"
+    ],
+    "cough": [
+      "No",
+      "Yes"
+    ],
+    "sob": [
+      "No",
+      "Yes"
+    ],
+    "fatigue": [
+      "No",
+      "Yes"
+    ],
+    "headache": [
+      "No",
+      "Yes"
+    ],
+    "loss_of_smell": [
+      "No",
+      "Yes"
+    ],
+    "loss_of_taste": [
+      "No",
+      "Yes"
+    ],
+    "runny_nose": [
+      "No",
+      "Yes"
+    ],
+    "muscle_sore": [
+      "No",
+      "Yes"
+    ],
+    "sore_throat": [
+      "No",
+      "Yes"
+    ],
+    "diarrhea": [
+      "No",
+      "Yes"
+    ]
+  },
+  "age_group_labels": {
+    "0-18": "0–18",
+    "19-30": "19–30",
+    "31-45": "31–45",
+    "46-60": "46–60",
+    "61+": "61+"
+  },
+  "chosen_structure": "Learned BN",
+  "choice_reason": "PR-AUC differs reliably (Expert − Learned = -0.0352, 95% bootstrap interval -0.0606 to -0.0144), so PR-AUC decides.",
+  "edges": [
+    [
+      "age_group",
+      "sore_throat"
+    ],
+    [
+      "cough",
+      "diarrhea"
+    ],
+    [
+      "cough",
+      "fatigue"
+    ],
+    [
+      "cough",
+      "fever"
+    ],
+    [
+      "cough",
+      "high_risk_exposure_occupation"
+    ],
+    [
+      "cough",
+      "high_risk_interactions"
+    ],
+    [
+      "cough",
+      "loss_of_smell"
+    ],
+    [
+      "cough",
+      "muscle_sore"
+    ],
+    [
+      "cough",
+      "runny_nose"
+    ],
+    [
+      "cough",
+      "sob"
+    ],
+    [
+      "covid",
+      "cough"
+    ],
+    [
+      "covid",
+      "fever"
+    ],
+    [
+      "covid",
+      "headache"
+    ],
+    [
+      "covid",
+      "loss_of_smell"
+    ],
+    [
+      "covid",
+      "sore_throat"
+    ],
+    [
+      "fatigue",
+      "diarrhea"
+    ],
+    [
+      "fatigue",
+      "high_risk_interactions"
+    ],
+    [
+      "fatigue",
+      "loss_of_smell"
+    ],
+    [
+      "fatigue",
+      "loss_of_taste"
+    ],
+    [
+      "fatigue",
+      "muscle_sore"
+    ],
+    [
+      "fatigue",
+      "runny_nose"
+    ],
+    [
+      "fatigue",
+      "sob"
+    ],
+    [
+      "fever",
+      "fatigue"
+    ],
+    [
+      "fever",
+      "high_risk_interactions"
+    ],
+    [
+      "fever",
+      "muscle_sore"
+    ],
+    [
+      "fever",
+      "sob"
+    ],
+    [
+      "headache",
+      "cough"
+    ],
+    [
+      "headache",
+      "diarrhea"
+    ],
+    [
+      "headache",
+      "fatigue"
+    ],
+    [
+      "headache",
+      "fever"
+    ],
+    [
+      "headache",
+      "high_risk_exposure_occupation"
+    ],
+    [
+      "headache",
+      "loss_of_taste"
+    ],
+    [
+      "headache",
+      "muscle_sore"
+    ],
+    [
+      "headache",
+      "runny_nose"
+    ],
+    [
+      "headache",
+      "sob"
+    ],
+    [
+      "high_risk_interactions",
+      "high_risk_exposure_occupation"
+    ],
+    [
+      "loss_of_smell",
+      "loss_of_taste"
+    ],
+    [
+      "muscle_sore",
+      "diarrhea"
+    ],
+    [
+      "runny_nose",
+      "high_risk_interactions"
+    ],
+    [
+      "sob",
+      "loss_of_smell"
+    ],
+    [
+      "sob",
+      "loss_of_taste"
+    ],
+    [
+      "sore_throat",
+      "cough"
+    ],
+    [
+      "sore_throat",
+      "fatigue"
+    ],
+    [
+      "sore_throat",
+      "fever"
+    ],
+    [
+      "sore_throat",
+      "headache"
+    ],
+    [
+      "sore_throat",
+      "muscle_sore"
+    ],
+    [
+      "sore_throat",
+      "runny_nose"
+    ]
+  ],
+  "structures": {
+    "Expert BN": [
+      [
+        "age_group",
+        "covid"
+      ],
+      [
+        "high_risk_exposure_occupation",
+        "covid"
+      ],
+      [
+        "high_risk_interactions",
+        "covid"
+      ],
+      [
+        "covid",
+        "fever"
+      ],
+      [
+        "covid",
+        "cough"
+      ],
+      [
+        "covid",
+        "sob"
+      ],
+      [
+        "covid",
+        "fatigue"
+      ],
+      [
+        "covid",
+        "headache"
+      ],
+      [
+        "covid",
+        "loss_of_smell"
+      ],
+      [
+        "covid",
+        "loss_of_taste"
+      ],
+      [
+        "covid",
+        "runny_nose"
+      ],
+      [
+        "covid",
+        "muscle_sore"
+      ],
+      [
+        "covid",
+        "sore_throat"
+      ],
+      [
+        "covid",
+        "diarrhea"
+      ],
+      [
+        "loss_of_smell",
+        "loss_of_taste"
+      ],
+      [
+        "cough",
+        "sob"
+      ],
+      [
+        "age_group",
+        "runny_nose"
+      ],
+      [
+        "age_group",
+        "sore_throat"
+      ]
+    ],
+    "Learned BN": [
+      [
+        "age_group",
+        "sore_throat"
+      ],
+      [
+        "cough",
+        "diarrhea"
+      ],
+      [
+        "cough",
+        "fatigue"
+      ],
+      [
+        "cough",
+        "fever"
+      ],
+      [
+        "cough",
+        "high_risk_exposure_occupation"
+      ],
+      [
+        "cough",
+        "high_risk_interactions"
+      ],
+      [
+        "cough",
+        "loss_of_smell"
+      ],
+      [
+        "cough",
+        "muscle_sore"
+      ],
+      [
+        "cough",
+        "runny_nose"
+      ],
+      [
+        "cough",
+        "sob"
+      ],
+      [
+        "covid",
+        "cough"
+      ],
+      [
+        "covid",
+        "fever"
+      ],
+      [
+        "covid",
+        "headache"
+      ],
+      [
+        "covid",
+        "loss_of_smell"
+      ],
+      [
+        "covid",
+        "sore_throat"
+      ],
+      [
+        "fatigue",
+        "diarrhea"
+      ],
+      [
+        "fatigue",
+        "high_risk_interactions"
+      ],
+      [
+        "fatigue",
+        "loss_of_smell"
+      ],
+      [
+        "fatigue",
+        "loss_of_taste"
+      ],
+      [
+        "fatigue",
+        "muscle_sore"
+      ],
+      [
+        "fatigue",
+        "runny_nose"
+      ],
+      [
+        "fatigue",
+        "sob"
+      ],
+      [
+        "fever",
+        "fatigue"
+      ],
+      [
+        "fever",
+        "high_risk_interactions"
+      ],
+      [
+        "fever",
+        "muscle_sore"
+      ],
+      [
+        "fever",
+        "sob"
+      ],
+      [
+        "headache",
+        "cough"
+      ],
+      [
+        "headache",
+        "diarrhea"
+      ],
+      [
+        "headache",
+        "fatigue"
+      ],
+      [
+        "headache",
+        "fever"
+      ],
+      [
+        "headache",
+        "high_risk_exposure_occupation"
+      ],
+      [
+        "headache",
+        "loss_of_taste"
+      ],
+      [
+        "headache",
+        "muscle_sore"
+      ],
+      [
+        "headache",
+        "runny_nose"
+      ],
+      [
+        "headache",
+        "sob"
+      ],
+      [
+        "high_risk_interactions",
+        "high_risk_exposure_occupation"
+      ],
+      [
+        "loss_of_smell",
+        "loss_of_taste"
+      ],
+      [
+        "muscle_sore",
+        "diarrhea"
+      ],
+      [
+        "runny_nose",
+        "high_risk_interactions"
+      ],
+      [
+        "sob",
+        "loss_of_smell"
+      ],
+      [
+        "sob",
+        "loss_of_taste"
+      ],
+      [
+        "sore_throat",
+        "cough"
+      ],
+      [
+        "sore_throat",
+        "fatigue"
+      ],
+      [
+        "sore_throat",
+        "fever"
+      ],
+      [
+        "sore_throat",
+        "headache"
+      ],
+      [
+        "sore_throat",
+        "muscle_sore"
+      ],
+      [
+        "sore_throat",
+        "runny_nose"
+      ]
+    ]
+  },
+  "training": {
+    "rows_final_model": 70976,
+    "positives_final_model": 1106,
+    "rows_train_split": 40805,
+    "positives_train_split": 798,
+    "split": "train batch_date <= 2020-08-31, test Sep–Oct 2020",
+    "prior": "BDeu, equivalent_sample_size=10",
+    "rows_raw": 93995,
+    "dropped_unknown_age": 29,
+    "dropped_true_duplicates": 40,
+    "rows_used": 93926
+  },
+  "overall_positivity": {
+    "all_rows": 0.013968443242552649,
+    "final_training_rows": 0.01558273219116321,
+    "train_split": 0.0195564269084671,
+    "test_split": 0.007121961061232725
+  },
+  "test_metrics": {
+    "all_test_rows": {
+      "Expert BN": {
+        "pr_auc": 0.05622945576760255,
+        "roc_auc": 0.6808969126809625,
+        "brier": 0.012297855970980471,
+        "ece": 0.016387004809943952,
+        "mean_pred": 0.0226168667312819,
+        "observed": 0.007121961061232725,
+        "n": 49565,
+        "positives": 353
+      },
+      "Learned BN": {
+        "pr_auc": 0.0914701013343176,
+        "roc_auc": 0.6599749445021241,
+        "brier": 0.0067985670114843275,
+        "ece": 0.00760429473163187,
+        "mean_pred": 0.014726255792864594,
+        "observed": 0.007121961061232725,
+        "n": 49565,
+        "positives": 353
+      },
+      "Logistic regression": {
+        "pr_auc": 0.07972967360300204,
+        "roc_auc": 0.6593449592777643,
+        "brier": 0.007008499895421129,
+        "ece": 0.01266084726374944,
+        "mean_pred": 0.01978280832498216,
+        "observed": 0.007121961061232725,
+        "n": 49565,
+        "positives": 353
+      },
+      "Constant baseline": {
+        "pr_auc": 0.007121961061232725,
+        "roc_auc": 0.5,
+        "brier": 0.007225854672781044,
+        "ece": 0.012434465847234375,
+        "mean_pred": 0.0195564269084671,
+        "observed": 0.007121961061232725,
+        "n": 49565,
+        "positives": 353
+      }
+    },
+    "complete_case_test_rows": {
+      "Expert BN": {
+        "pr_auc": 0.06282426435593876,
+        "roc_auc": 0.741445349346431,
+        "brier": 0.01872804202721845,
+        "ece": 0.020482513566409146,
+        "mean_pred": 0.02895658497374082,
+        "observed": 0.010208478340127938,
+        "n": 30171,
+        "positives": 308
+      },
+      "Learned BN": {
+        "pr_auc": 0.09933720859244055,
+        "roc_auc": 0.7232830793089305,
+        "brier": 0.009667370979151312,
+        "ece": 0.00613668981825965,
+        "mean_pred": 0.016345168158387588,
+        "observed": 0.010208478340127938,
+        "n": 30171,
+        "positives": 308
+      },
+      "Logistic regression": {
+        "pr_auc": 0.09168607560313422,
+        "roc_auc": 0.7491233777105926,
+        "brier": 0.009740884138432944,
+        "ece": 0.006300199989191042,
+        "mean_pred": 0.016508678329318977,
+        "observed": 0.010208478340127938,
+        "n": 30171,
+        "positives": 308
+      },
+      "Constant baseline": {
+        "pr_auc": 0.010208478340127938,
+        "roc_auc": 0.5,
+        "brier": 0.010191649452543387,
+        "ece": 0.009347948568339164,
+        "mean_pred": 0.0195564269084671,
+        "observed": 0.010208478340127938,
+        "n": 30171,
+        "positives": 308
+      }
+    },
+    "all_test_rows_unknown_exposure_not_evidence": {
+      "Expert BN": {
+        "pr_auc": 0.0572905279487155,
+        "roc_auc": 0.7169878589689658,
+        "brier": 0.012134201547570653,
+        "ece": 0.012718303499725882,
+        "mean_pred": 0.019233104473112616,
+        "observed": 0.007121961061232725,
+        "n": 49565,
+        "positives": 353
+      },
+      "Learned BN": {
+        "pr_auc": 0.09284304670177088,
+        "roc_auc": 0.6801588502217037,
+        "brier": 0.006794456065893916,
+        "ece": 0.0073534650242246076,
+        "mean_pred": 0.014475426085457333,
+        "observed": 0.007121961061232725,
+        "n": 49565,
+        "positives": 353
+      }
+    }
+  },
+  "pr_auc_diff_expert_minus_learned": {
+    "estimate": -0.03524064556671505,
+    "ci95": [
+      -0.06059455142420983,
+      -0.014418902226118486
+    ]
+  },
+  "sanity_loss_of_smell": {
+    "Expert BN": {
+      "No": 0.017371996012281968,
+      "Yes": 0.22296365491090292
+    },
+    "Learned BN": {
+      "No": 0.01721484054128048,
+      "Yes": 0.2338019856039457
+    },
+    "Training data (empirical)": {
+      "No": 0.017298636926889713,
+      "Yes": 0.21978021978021978
+    },
+    "Final model": {
+      "No": 0.013711497065494453,
+      "Yes": 0.23449332524093916
+    }
+  },
+  "exposure_unknown_state": {
+    "train_rows_symptoms_complete": 40805,
+    "rows_lost_if_exposure_required": 2401,
+    "positives_lost": 104,
+    "positives_total": 798,
+    "positivity_lost_rows": 0.043315285297792584,
+    "positivity_kept_rows": 0.018071034267263825
+  },
+  "learned_structure_stability": {
+    "hash_seed_used": "0",
+    "runs": [
+      {
+        "seed": "0",
+        "edges": 47,
+        "bic": -176215.47049125147,
+        "covid_children": [
+          "cough",
+          "fever",
+          "headache",
+          "loss_of_smell",
+          "sore_throat"
+        ],
+        "covid_parents": [],
+        "pr_auc": 0.0914701013343176,
+        "ece": 0.00760429473163187
+      },
+      {
+        "seed": "1",
+        "edges": 47,
+        "bic": -176215.47049125147,
+        "covid_children": [
+          "cough",
+          "fever",
+          "headache",
+          "loss_of_smell",
+          "sore_throat"
+        ],
+        "covid_parents": [],
+        "pr_auc": 0.0914701013343176,
+        "ece": 0.00760429473163187
+      },
+      {
+        "seed": "2",
+        "edges": 45,
+        "bic": -176350.9939696267,
+        "covid_children": [
+          "cough",
+          "fever",
+          "headache",
+          "loss_of_smell",
+          "loss_of_taste"
+        ],
+        "covid_parents": [],
+        "pr_auc": 0.08690480486228144,
+        "ece": 0.007736976385712195
+      },
+      {
+        "seed": "3",
+        "edges": 41,
+        "bic": -176472.491368803,
+        "covid_children": [
+          "cough",
+          "fever",
+          "headache",
+          "loss_of_smell",
+          "loss_of_taste",
+          "muscle_sore"
+        ],
+        "covid_parents": [],
+        "pr_auc": 0.08443044054636735,
+        "ece": 0.007610916120193654
+      },
+      {
+        "seed": "4",
+        "edges": 47,
+        "bic": -176215.47049125147,
+        "covid_children": [
+          "cough",
+          "fever",
+          "headache",
+          "loss_of_smell",
+          "sore_throat"
+        ],
+        "covid_parents": [],
+        "pr_auc": 0.0914701013343176,
+        "ece": 0.00760429473163187
+      },
+      {
+        "seed": "5",
+        "edges": 44,
+        "bic": -176261.3846723947,
+        "covid_children": [
+          "cough",
+          "fever",
+          "loss_of_smell"
+        ],
+        "covid_parents": [],
+        "pr_auc": 0.07502169107322737,
+        "ece": 0.008514431674234426
+      }
+    ],
+    "edges_in_every_run": 22,
+    "distinct_edges_seen": 66
+  },
+  "round_trip": {
+    "rows_compared": 2000,
+    "max_prediction_diff": 5.551115123125783e-17,
+    "max_cpd_diff": 0.0,
+    "same_edges": true,
+    "same_states": true,
+    "ok": true
+  },
+  "notes": [
+    "Exposure answers that are missing are the state 'Unknown'.",
+    "Symptoms may be left out of the evidence when not recorded; never treat missing as 'No'."
+  ]
+}

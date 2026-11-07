@@ -1,0 +1,389 @@
+{
+ "missingness": [
+  {
+   "column": "rapid_flu_results",
+   "pct": 99.73
+  },
+  {
+   "column": "rapid_strep_results",
+   "pct": 99.58
+  },
+  {
+   "column": "cxr_impression",
+   "pct": 99.27
+  },
+  {
+   "column": "cxr_label",
+   "pct": 99.27
+  },
+  {
+   "column": "cxr_link",
+   "pct": 99.27
+  },
+  {
+   "column": "cxr_findings",
+   "pct": 99.27
+  },
+  {
+   "column": "sob_severity",
+   "pct": 96.98
+  },
+  {
+   "column": "cough_severity",
+   "pct": 93.92
+  },
+  {
+   "column": "er_referral",
+   "pct": 88.12
+  },
+  {
+   "column": "days_since_symptom_onset",
+   "pct": 83.12
+  },
+  {
+   "column": "rhonchi",
+   "pct": 75.16
+  },
+  {
+   "column": "wheezes",
+   "pct": 70.76
+  },
+  {
+   "column": "ctab",
+   "pct": 62.27
+  },
+  {
+   "column": "rr",
+   "pct": 55.9
+  },
+  {
+   "column": "dia",
+   "pct": 50.5
+  },
+  {
+   "column": "sys",
+   "pct": 50.5
+  },
+  {
+   "column": "sats",
+   "pct": 49.43
+  },
+  {
+   "column": "temperature",
+   "pct": 49.42
+  },
+  {
+   "column": "pulse",
+   "pct": 48.64
+  },
+  {
+   "column": "labored_respiration",
+   "pct": 48.14
+  },
+  {
+   "column": "high_risk_interactions",
+   "pct": 26.41
+  },
+  {
+   "column": "fever",
+   "pct": 24.39
+  },
+  {
+   "column": "sob",
+   "pct": 0.22
+  },
+  {
+   "column": "loss_of_taste",
+   "pct": 0.2
+  },
+  {
+   "column": "loss_of_smell",
+   "pct": 0.2
+  },
+  {
+   "column": "diarrhea",
+   "pct": 0.2
+  },
+  {
+   "column": "runny_nose",
+   "pct": 0.2
+  },
+  {
+   "column": "sore_throat",
+   "pct": 0.19
+  },
+  {
+   "column": "headache",
+   "pct": 0.19
+  },
+  {
+   "column": "muscle_sore",
+   "pct": 0.19
+  },
+  {
+   "column": "fatigue",
+   "pct": 0.19
+  },
+  {
+   "column": "high_risk_exposure_occupation",
+   "pct": 0.18
+  },
+  {
+   "column": "cough",
+   "pct": 0.02
+  }
+ ],
+ "missingness_source": "raw",
+ "duplicates": {
+  "n": 31653,
+  "positivity_with_pct": 1.397,
+  "positivity_without_pct": 2.098
+ },
+ "vitals": [
+  {
+   "key": "temperature",
+   "label": "Temperature (°C)",
+   "positive": {
+    "n": 1071,
+    "q1": 36.7,
+    "median": 36.9,
+    "q3": 37.1
+   },
+   "negative": {
+    "n": 46468,
+    "q1": 36.65,
+    "median": 36.8,
+    "q3": 36.95
+   }
+  },
+  {
+   "key": "pulse",
+   "label": "Pulse (bpm)",
+   "positive": {
+    "n": 1082,
+    "q1": 72.0,
+    "median": 80.0,
+    "q3": 90.0
+   },
+   "negative": {
+    "n": 47197,
+    "q1": 68.0,
+    "median": 76.0,
+    "q3": 85.0
+   }
+  },
+  {
+   "key": "sys",
+   "label": "Systolic BP (mmHg)",
+   "positive": {
+    "n": 1064,
+    "q1": 114.0,
+    "median": 123.0,
+    "q3": 134.0
+   },
+   "negative": {
+    "n": 45457,
+    "q1": 112.0,
+    "median": 121.0,
+    "q3": 132.0
+   }
+  },
+  {
+   "key": "dia",
+   "label": "Diastolic BP (mmHg)",
+   "positive": {
+    "n": 1064,
+    "q1": 74.0,
+    "median": 79.0,
+    "q3": 85.0
+   },
+   "negative": {
+    "n": 45456,
+    "q1": 72.0,
+    "median": 78.0,
+    "q3": 84.0
+   }
+  },
+  {
+   "key": "rr",
+   "label": "Respiratory rate (/min)",
+   "positive": {
+    "n": 968,
+    "q1": 14.0,
+    "median": 16.0,
+    "q3": 16.0
+   },
+   "negative": {
+    "n": 40477,
+    "q1": 13.0,
+    "median": 15.0,
+    "q3": 16.0
+   }
+  },
+  {
+   "key": "sats",
+   "label": "SpO₂ (%)",
+   "positive": {
+    "n": 1076,
+    "q1": 97.0,
+    "median": 98.0,
+    "q3": 99.0
+   },
+   "negative": {
+    "n": 46458,
+    "q1": 97.0,
+    "median": 98.0,
+    "q3": 99.0
+   }
+  }
+ ],
+ "cleaning_log": [
+  {
+   "step": "1.2",
+   "variable": "all",
+   "issue": "31,653 exact duplicate rows; no patient ID available",
+   "decision": "Kept; flagged in `is_exact_duplicate`; sensitivity check without them",
+   "rows_affected": 31653.0
+  },
+  {
+   "step": "1.3",
+   "variable": "vitals",
+   "issue": "~50% missing; driven by test pathway (no in-clinic exam)",
+   "decision": "Kept as NaN; `vitals_available` flag added",
+   "rows_affected": 46453.0
+  },
+  {
+   "step": "1.3",
+   "variable": "er_referral",
+   "issue": "100% missing after 2020-06-16 (field retired)",
+   "decision": "Kept; excluded from trend analysis",
+   "rows_affected": 82826.0
+  },
+  {
+   "step": "1.3",
+   "variable": "cxr_findings/cxr_impression/cxr_link",
+   "issue": "~99% missing; free text / URLs",
+   "decision": "Excluded from analytical set; `cxr_label` kept as categorical",
+   "rows_affected": 93306.0
+  },
+  {
+   "step": "1.4",
+   "variable": "swab_type",
+   "issue": "19 raw labels incl. typos ('anterior nars', 'anterior mares', case variants)",
+   "decision": "Mapped to 5 standard types; 'XRT' → 'Invalid/Other'",
+   "rows_affected": 92.0
+  },
+  {
+   "step": "1.4",
+   "variable": "test_name",
+   "issue": "11 test labels, several synonyms for lab NAAT/PCR",
+   "decision": "Grouped into 5 `test_category` levels (raw kept)",
+   "rows_affected": 93995.0
+  },
+  {
+   "step": "1.4",
+   "variable": "cough_severity/sob_severity",
+   "issue": "NaN = severity not recorded",
+   "decision": "Explicit 'Not reported' level; ordered categorical",
+   "rows_affected": null
+  },
+  {
+   "step": "1.4",
+   "variable": "rapid_flu/strep, cxr_label",
+   "issue": "NaN = test not performed",
+   "decision": "Explicit 'Not tested' level",
+   "rows_affected": null
+  },
+  {
+   "step": "1.5",
+   "variable": "batch_date",
+   "issue": "Stored as text",
+   "decision": "Converted to datetime; added batch_month, epi_week",
+   "rows_affected": 93995.0
+  },
+  {
+   "step": "1.6",
+   "variable": "temperature",
+   "issue": "3 values outside 34.0–42.5",
+   "decision": "Set to NaN",
+   "rows_affected": 3.0
+  },
+  {
+   "step": "1.6",
+   "variable": "sys",
+   "issue": "1 values outside 60–250",
+   "decision": "Set to NaN",
+   "rows_affected": 1.0
+  },
+  {
+   "step": "1.6",
+   "variable": "dia",
+   "issue": "2 values outside 30–150",
+   "decision": "Set to NaN",
+   "rows_affected": 2.0
+  },
+  {
+   "step": "1.6",
+   "variable": "rr",
+   "issue": "3 values outside 6–60",
+   "decision": "Set to NaN",
+   "rows_affected": 3.0
+  },
+  {
+   "step": "1.6",
+   "variable": "sats",
+   "issue": "1 values outside 70–100",
+   "decision": "Set to NaN",
+   "rows_affected": 1.0
+  },
+  {
+   "step": "1.6",
+   "variable": "days_since_symptom_onset",
+   "issue": "211 values outside 0–60",
+   "decision": "Set to NaN",
+   "rows_affected": 211.0
+  },
+  {
+   "step": "1.6",
+   "variable": "sys/dia",
+   "issue": "1 rows with diastolic ≥ systolic",
+   "decision": "Both set to NaN",
+   "rows_affected": 1.0
+  },
+  {
+   "step": "1.7",
+   "variable": "age",
+   "issue": "29 negative ages",
+   "decision": "Set to NaN (impossible)",
+   "rows_affected": 29.0
+  },
+  {
+   "step": "1.7",
+   "variable": "age",
+   "issue": "Ages 0 and ≥90 present; IQR outliers are older adults",
+   "decision": "Kept — clinically plausible (infants, elderly). Max 91 likely de-identification top-code",
+   "rows_affected": null
+  },
+  {
+   "step": "1.7",
+   "variable": "age_group",
+   "issue": "Brief lists 0–18 … 46–60",
+   "decision": "Added 61+ to cover full range; Unknown for invalid ages",
+   "rows_affected": null
+  },
+  {
+   "step": "1.9",
+   "variable": "boolean fields",
+   "issue": "True/False/NaN stored as object",
+   "decision": "Nullable `boolean` dtype + 3-level `<col>_cat` (Yes/No/Unknown)",
+   "rows_affected": null
+  },
+  {
+   "step": "1.10",
+   "variable": "derived",
+   "issue": "—",
+   "decision": "Added n_symptoms, any_symptom, symptom_status, n_comorbidities, anosmia_or_ageusia, fever_by_temp (counts treat Unknown as not-reported-Yes)",
+   "rows_affected": null
+  }
+ ]
+}
