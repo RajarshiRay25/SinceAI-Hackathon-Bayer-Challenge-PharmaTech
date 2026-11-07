@@ -150,3 +150,9 @@ h1, h2, h3 { text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* About page: a dot travelling between Tampere and Helsinki */
+@keyframes bridge {
+  from { left: 0; }
+  to { left: calc(100% - 7px); }
+}

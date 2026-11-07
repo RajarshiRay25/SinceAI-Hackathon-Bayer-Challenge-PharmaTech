@@ -11,8 +11,9 @@ import ConditionsTab from "./components/ConditionsTab.jsx";
 import QualityTab from "./components/QualityTab.jsx";
 import ChatPanel from "./components/ChatPanel.jsx";
 import BayesExplorer from "./components/BayesExplorer.jsx";
+import AboutPage from "./components/AboutPage.jsx";
 
-const TAB_IDS = ["overview", "conditions", "quality", "whatif"];
+const TAB_IDS = ["overview", "conditions", "quality", "whatif", "about"];
 const tabFromHash = () => (TAB_IDS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "overview");
 
 export default function App() {
@@ -44,7 +45,7 @@ export default function App() {
     return () => { clearTimeout(t); ctrl.abort(); };
   }, [filters]);
 
-  // tabs live in the URL (#overview, #conditions, #quality, #whatif) so they can be bookmarked
+  // tabs live in the URL (#overview, #conditions, #quality, #whatif, #about) so they can be bookmarked
   useEffect(() => {
     const onHash = () => setTab(tabFromHash());
     addEventListener("hashchange", onHash);
@@ -75,7 +76,9 @@ export default function App() {
           </div>
         )}
 
-        {!meta || !data ? (
+        {tab === "about" ? (
+          <AboutPage onTab={goTab} records={meta?.records} />
+        ) : !meta || !data ? (
           !error && <Skeleton />
         ) : tab === "quality" ? (
           <QualityTab q={quality} />

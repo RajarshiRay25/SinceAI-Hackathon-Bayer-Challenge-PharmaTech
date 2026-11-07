@@ -13,6 +13,8 @@ const TABS = [
     icon: <path {...icon} d="M10 3 4.5 5v4.6c0 3.4 2.4 5.9 5.5 7.4 3.1-1.5 5.5-4 5.5-7.4V5L10 3Zm-2.3 7 1.6 1.6 3-3.1" /> },
   { id: "whatif", label: "What-if explorer", short: "What-if",
     icon: <path {...icon} d="M5 5.5a2 2 0 1 0 0 .01M15 5.5a2 2 0 1 0 0 .01M10 15a2 2 0 1 0 0 .01M6.6 7l2.4 6M13.4 7 11 13M7 5.5h6" /> },
+  { id: "about", label: "About us", short: "About",
+    icon: <path {...icon} d="M7.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm-4.5 7a4.5 4.5 0 0 1 9 0M13.5 9a2 2 0 1 0 0-4M14.5 12a3.8 3.8 0 0 1 3 4" /> },
 ];
 
 /** True once the page has scrolled past a few pixels; the header compacts. */
@@ -80,11 +82,11 @@ function ThemeSwitch({ dark, onToggle }) {
   );
 }
 
-export default function Header({ tab, onTab, dark, onToggleTheme, loading, records }) {
+export default function Header({ tab, onTab, dark, onToggleTheme, loading }) {
   const [navRef, box] = useIndicator(tab);
   const scrolled = useScrolled();
 
-  // number keys 1–4 jump between views (ignored while typing in a field)
+  // number keys 1–5 jump between views (ignored while typing in a field)
   useEffect(() => {
     const onKey = (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey || /input|textarea|select/i.test(e.target.tagName)) return;
@@ -126,7 +128,7 @@ export default function Header({ tab, onTab, dark, onToggleTheme, loading, recor
             </div>
             <div className={`grid transition-all duration-300 ${scrolled ? "grid-rows-[0fr] opacity-0" : "grid-rows-[1fr] opacity-100"}`}>
               <div className="overflow-hidden">
-                <div className="mt-1 hidden items-center gap-2 text-[12.5px] tracking-wide text-white/75 sm:flex">
+                <div className="mt-1 hidden items-center gap-2 text-[12.5px] tracking-wide text-white/75 sm:flex lg:hidden xl:flex">
                   <span>SARS-CoV-2 test surveillance</span>
                   <span className="h-1 w-1 rounded-full bg-white/40" />
                   <span>Carbon Health clinics, 2020</span>
@@ -158,7 +160,7 @@ export default function Header({ tab, onTab, dark, onToggleTheme, loading, recor
                   data-active={on}
                   data-tab={t.id}
                   onClick={() => onTab(t.id)}
-                  className={`group/tab relative flex items-center gap-2 whitespace-nowrap rounded-xl px-3.5 py-2 text-[14px] font-semibold tracking-wide transition-colors focus-visible:outline-white xl:px-4 ${
+                  className={`group/tab relative flex items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-[14px] font-semibold tracking-wide transition-colors focus-visible:outline-white xl:px-3.5 ${
                     on ? "text-hero-2" : "text-white/80 hover:bg-white/10 hover:text-white"
                   }`}
                 >
@@ -173,13 +175,6 @@ export default function Header({ tab, onTab, dark, onToggleTheme, loading, recor
         </div>
 
         <div className="flex items-center gap-2.5 justify-self-end">
-          <span className="hidden items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[12px] font-semibold text-white/90 ring-1 ring-white/20 backdrop-blur xl:inline-flex">
-            <span className="relative flex h-2 w-2">
-              {!loading && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60" />}
-              <span className={`relative h-2 w-2 rounded-full ${loading ? "animate-pulse bg-amber-300" : "bg-emerald-300"}`} />
-            </span>
-            {loading ? "Updating…" : records ? <><span className="num">{records.toLocaleString("en-US")}</span> tests</> : "Connecting…"}
-          </span>
           <ThemeSwitch dark={dark} onToggle={onToggleTheme} />
         </div>
       </div>
