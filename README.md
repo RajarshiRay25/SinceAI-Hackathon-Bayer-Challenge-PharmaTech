@@ -1,6 +1,45 @@
-# HealthSignal AI — Dashboard
+<div align="center">
 
-Interactive dashboard for the Carbon Health COVID-19 clinical testing data (Phase 1).
+# 🩺 HealthSignal AI
+
+**An interactive dashboard, Bayesian what-if explorer and data assistant for COVID-19 clinical testing data**
+
+Built on the Carbon Health COVID-19 Clinical Data Repository: 93,995 tests, April to October 2020
+
+### 🌐 [Live demo: sinceai-hackathon-bayer-challenge.onrender.com](https://sinceai-hackathon-bayer-challenge.onrender.com/#overview)
+
+[![Live on Render](https://img.shields.io/badge/Live_demo-Render-46E3B7?logo=render&logoColor=white)](https://sinceai-hackathon-bayer-challenge.onrender.com/#overview)
+![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-2.15-22B5BF)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-2.x-150458?logo=pandas&logoColor=white)
+![pgmpy](https://img.shields.io/badge/pgmpy-1.1.2-8A2BE2)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
+
+[Live demo](https://sinceai-hackathon-bayer-challenge.onrender.com/#overview) · [Features](#-features) · [Run locally](#-quick-start) · [API](#-api-reference) · [Chatbot](#-ask-healthsignal-chatbot) · [Deploy](#%EF%B8%8F-deployment)
+
+</div>
+
+---
+
+## ✨ Features
+
+| View | What it shows |
+|---|---|
+| 📊 **[Overview](https://sinceai-hackathon-bayer-challenge.onrender.com/#overview)** | Weekly positivity and test volume, positivity by age group and test type, and symptom signals (odds ratios, prevalence, symptom count) |
+| ❤️ **[Conditions & exposure](https://sinceai-hackathon-bayer-challenge.onrender.com/#conditions)** | Underlying conditions and high-risk exposure, as odds ratios with 95% CIs |
+| 🛡️ **[Data quality](https://sinceai-hackathon-bayer-challenge.onrender.com/#quality)** | Missing values, duplicates, vital signs and every cleaning step |
+| 🔮 **[What-if explorer](https://sinceai-hackathon-bayer-challenge.onrender.com/#whatif)** | A Bayesian network: pick a patient profile and see what moves the estimated positivity |
+| 👥 **[About us](https://sinceai-hackathon-bayer-challenge.onrender.com/#about)** | The team, the views and the tech stack |
+| ✨ **Ask HealthSignal** | An LLM assistant whose numbers are all computed by the backend, never by the model |
+
+Each tab has its own URL, so it can be bookmarked or shared. Light and dark themes are included.
+
+---
+
+## 🗂️ Project structure
 
 ```
 healthsignal/
@@ -179,6 +218,8 @@ cd frontend && npm run build          # creates frontend/dist
 cd ../backend && uvicorn main:app     # site + API on http://localhost:8000
 ```
 
+**Live deployment:** the app is hosted on Render at **https://sinceai-hackathon-bayer-challenge.onrender.com**.
+
 **Docker** (Render, Railway, Fly.io): create a new web service from the GitHub repo and choose Docker. The included `Dockerfile` builds the React app and serves it with the API. The app listens on the `PORT` the host provides, so no other settings are needed. Add the LLM variables if you want the chatbot.
 
 ---
@@ -208,6 +249,8 @@ cd backend && python -m pytest tests -q
 | **Yunseon Lee** | Doctoral Researcher in Computer Science, University of Helsinki |
 
 <div align="center">
+
+**[🌐 Open the live dashboard](https://sinceai-hackathon-bayer-challenge.onrender.com/#overview)** · **[GitHub repo](https://github.com/RajarshiRay25/SinceAI-Hackathon-Bayer-Challenge-PharmaTech)**
 
 Data: Carbon Health COVID-19 Clinical Data Repository · Built for the SinceAI Hackathon, Bayer challenge
 
